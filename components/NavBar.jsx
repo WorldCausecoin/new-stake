@@ -87,11 +87,15 @@ const Navbar = () => {
       <ul className="mr-20 hidden list-none flex-row  py-2 w-[33%] justify-evenly text-white md:flex">
       <li className=" cursor-pointer  px-2 text-white mr-2">
         
-        <Link href="https://worldcausecoin.com/">
+        {/* <Link href="https://worldcausecoin.com/"> */}
+
             <button className=" mt-2 cursor-pointer border-none py-2 rounded-full  text-[#c6c7ca]  hover:text-white  ">
+            <a target="_blank" href="https://worldcausecoin.com/">
+              
              Home
+          </a>
             </button>
-          </Link>
+          {/* </Link> */}
       </li>
       
       <li className=" cursor-pointer  px-2 text-white ">
