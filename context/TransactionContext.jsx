@@ -287,7 +287,7 @@ const changeChainNetwork=()=>{
       const stakingContract = getCauseStakingContract();
       let amount = await stakingContract.stakedAmount();
       let fmtAmount=ethers.utils.formatEther(amount)
-      settotalStakedAmount(fmtAmount.slice(0,5));
+      settotalStakedAmount(fmtAmount);
     } catch (e) {
       console.log(e);
     }
@@ -366,7 +366,7 @@ const changeChainNetwork=()=>{
 
       console.log(total);
 
-      setAddressRewards(total.toString().slice(0,7));
+      setAddressRewards(total.toString().slice(0,10));
     }
   };
 
