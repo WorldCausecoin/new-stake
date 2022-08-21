@@ -104,6 +104,13 @@ export const TransactionProvider = ({ children }) => {
     setFormData((prevState) => ({ ...prevState, [name]: e.target.value }));
   };
 
+  const setMax=(e,name) => {
+    e.preventDefault();
+    setFormData((prevState) => ({ ...prevState, [name]: Causebalance }));
+    console.log("is setting max");
+    console.log(Causebalance)  
+  }
+
   const getAddressBNBbalance = () => {
     try {
       if (!BinanceChain) return alert("Please install Binance wallet!");
@@ -366,7 +373,7 @@ const changeChainNetwork=()=>{
 
       console.log(total);
 
-      setAddressRewards(total.toString().slice(0,10));
+      setAddressRewards(total.toString().slice(0,11));
     }
   };
 
@@ -422,6 +429,9 @@ const changeChainNetwork=()=>{
         calculateStakedAmount,
         addressRewards,
         calculateStakedRewards,
+        stakePeriod,
+        setMax,
+        formData
       }}
     >
       {children}

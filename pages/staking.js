@@ -8,30 +8,33 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Loader from "../components/Loader";
 
-const Input = ({ placeholder, name, type, value, handleChange }) => (
-  <input
+const Input = ({ placeholder, name, type, value, handleChange }) => {
+  console.log("the vlue in the input is  "+value);
+
+  return (<input
     placeholder={placeholder}
     type={type}
     onChange={(e) => handleChange(e, name)}
     step="0.0001"
     value={value}
-    className="white-glassmorphism my-2 w-full rounded-full border-none  bg-transparent p-4 text-sm text-white outline-none md:w-[70%]"
-  />
-);
+    className="white-glassmorphism my-2 w-50 rounded-full border-none  bg-transparent p-4 text-sm text-white outline-none md:w-[70%]"
+  />)
+  };
 
 const Btn = ({ time }) => {
-  const { SetDuration } = useContext(TransactionContext);
+  const { SetDuration,stakePeriod } = useContext(TransactionContext);
   const [isClicked, setIsClicked] = useState(false);
   const handleClick = (e) => {
-    setIsClicked(!isClicked);
+    setIsClicked(true);
     e.preventDefault();
     SetDuration(time);
   };
+
   return (
     <button
       onClick={(e)=>handleClick(e)}
       className={
-        !isClicked
+        stakePeriod !== time
           ? `mx-2 rounded bg-slate-500 px-2 py-2`
           : `rounded bg-amber-500 px-4 py-2 `
       }
@@ -60,6 +63,7 @@ const Staking = () => {
     isStaking,
     stakePeriod,
     calculateStakedAmount,
+    setMax
   } = useContext(TransactionContext);
 
   const handleSubmit = (e) => {
@@ -71,6 +75,10 @@ const Staking = () => {
       return;}
     stakeCause();
   };
+
+  console.log("the formData is   "+formData.amount);  
+
+ 
 
   useEffect(() => {
     if (!currentAccount) {
@@ -158,8 +166,16 @@ const Staking = () => {
               placeholder="Amount (CAUSE)"
               name="amount"
               type="number"
+              value={formData.amount}
               handleChange={handleChange}
             />
+            <button
+              type="button"
+              onClick={(e)=>setMax(e, "amount")}
+              className="w-[30%] cursor-pointer rounded-full border-none  p-3 text-lg	text-white bg-amber-500 "
+            >
+              MAX COINS
+            </button>
           </div>
 
           {isStaking ? (

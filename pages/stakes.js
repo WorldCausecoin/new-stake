@@ -61,7 +61,7 @@ const StakeCard = ({ amountStaked, reward, stakeId, duration, dueDate }) => {
       <p className="rounded px-2  text-center w-1/6">
          <Countdown date={Date.now() + m*1000}  renderer={renderer}/> 
          </p>
-      <p className="rounded px-2   text-center w-1/6">{reward.toString().slice(0,10)} CAUSE</p>
+      <p className="rounded px-2   text-center w-1/6">{reward.toString().slice(0,11)} CAUSE</p>
 
       {!isUnstaked ? (
         <button
@@ -138,8 +138,6 @@ const Staking = () => {
       router.push("/");
     }
   });
-
-  useEffect(() => {}, []);
 
   return (
     <div className=" min-h-screen bg-[#10122d] text-white">
